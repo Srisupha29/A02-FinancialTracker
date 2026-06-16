@@ -20,4 +20,13 @@ Transaction* createTransaction(
     double amount
 );
 
+void insertAtEnd(
+    Transaction **head,
+    Transaction *newNode
+);
+
+void printTransactions(
+    Transaction *head
+);
+
 #endif

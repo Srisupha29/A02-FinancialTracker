@@ -4,6 +4,8 @@
 
 int main()
 {
+    Transaction *head = NULL;
+
     Transaction *salary =
         createTransaction(
             INCOME,
@@ -11,9 +13,27 @@ int main()
             1200
         );
 
-    printf("Description: %s\n", salary->description);
+    Transaction *rent =
+        createTransaction(
+            EXPENSE,
+            "Rent",
+            800
+        );
 
-    printf("Amount: %.2f\n", salary->amount);
+    Transaction *food =
+        createTransaction(
+            EXPENSE,
+            "Food",
+            150
+        );
+
+    insertAtEnd(&head, salary);
+
+    insertAtEnd(&head, rent);
+
+    insertAtEnd(&head, food);
+
+    printTransactions(head);
 
     return 0;
 }
