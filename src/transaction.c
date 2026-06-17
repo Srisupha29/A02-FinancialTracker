@@ -65,3 +65,28 @@ void printTransactions(
         position++;
     }
 }
+
+double calculateBalance(
+    Transaction *head
+)
+{
+    double balance = 0;
+
+    Transaction *current = head;
+
+    while (current != NULL)
+    {
+        if (current->type == INCOME)
+        {
+            balance += current->amount;
+        }
+        else
+        {
+            balance -= current->amount;
+        }
+
+        current = current->next;
+    }
+
+    return balance;
+}

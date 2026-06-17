@@ -35,5 +35,18 @@ int main()
 
     printTransactions(head);
 
+    double balance = calculateBalance(head);
+
+    printf("\nBalance: %.2f\n", balance);
+
+    if (balance >= 0)
+    {
+        printf("Status: Within Budget\n");
+    }
+    else
+    {
+        printf("Status: Over Budget\n");
+    }
+
     return 0;
 }

@@ -29,4 +29,8 @@ void printTransactions(
     Transaction *head
 );
 
+double calculateBalance(
+    Transaction *head
+);
+
 #endif
