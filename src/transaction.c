@@ -90,3 +90,33 @@ double calculateBalance(
 
     return balance;
 }
+
+void insertAtPosition(
+    Transaction **head,
+    Transaction *newNode,
+    int position
+)
+{
+    if (position <= 1 || *head == NULL)
+    {
+        newNode->next = *head;
+        *head = newNode;
+        return;
+    }
+
+    Transaction *current = *head;
+
+    int currentPosition = 1;
+
+    while (
+        current->next != NULL &&
+        currentPosition < position - 1
+    )
+    {
+        current = current->next;
+        currentPosition++;
+    }
+
+    newNode->next = current->next;
+    current->next = newNode;
+}

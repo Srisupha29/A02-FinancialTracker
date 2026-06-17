@@ -33,4 +33,11 @@ double calculateBalance(
     Transaction *head
 );
 
+void insertAtPosition(
+    Transaction **head,
+    Transaction *newNode,
+    int position
+);
+
 #endif
+

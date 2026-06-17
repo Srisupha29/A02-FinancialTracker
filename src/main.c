@@ -6,47 +6,51 @@ int main()
 {
     Transaction *head = NULL;
 
-    Transaction *salary =
+    insertAtEnd(
+        &head,
         createTransaction(
             INCOME,
             "Salary",
             1200
-        );
+        )
+    );
 
-    Transaction *rent =
+    insertAtEnd(
+        &head,
         createTransaction(
             EXPENSE,
             "Rent",
             800
-        );
+        )
+    );
 
-    Transaction *food =
+    insertAtEnd(
+        &head,
         createTransaction(
             EXPENSE,
             "Food",
             150
-        );
+        )
+    );
 
-    insertAtEnd(&head, salary);
-
-    insertAtEnd(&head, rent);
-
-    insertAtEnd(&head, food);
+    insertAtPosition(
+        &head,
+        createTransaction(
+            EXPENSE,
+            "Internet",
+            50
+        ),
+        2
+    );
 
     printTransactions(head);
 
-    double balance = calculateBalance(head);
-
-    printf("\nBalance: %.2f\n", balance);
-
-    if (balance >= 0)
-    {
-        printf("Status: Within Budget\n");
-    }
-    else
-    {
-        printf("Status: Over Budget\n");
-    }
-
     return 0;
 }
+
+    
+            
+                      
+   
+
+   
