@@ -3,63 +3,39 @@
 #include "../include/transaction.h"
 #include "../include/fileio.h"
 
-int main()
+int main() 
 {
     Transaction *head = NULL;
 
-    insertAtEnd(
-        &head,
-        createTransaction(
-            INCOME,
-            "Salary",
-            1200
-        )
-    );
+    char choice;
 
-    insertAtEnd(
-        &head,
-        createTransaction(
-            EXPENSE,
-            "Rent",
-            800
-        )
-    );
+    printf("Resume previous session? (y/n): ");
+    scanf(" %c", &choice);
 
-    insertAtEnd(
-        &head,
-        createTransaction(
-            EXPENSE,
-            "Food",
-            150
-        )
-    );
+    if (choice == 'y' || choice == 'Y')
+    {
+        head = loadTransactions(
+            "logs/transaction_log.txt"
+        );
 
-    insertAtPosition(
-        &head,
-        createTransaction(
-            EXPENSE,
-            "Internet",
-            50
-        ),
-        2
-    );
-
-    deleteAtPosition(head, 3);
+        printf("\nPrevious session loaded.\n");
+    }
+    else
+    {
+        printf("\nStarting new session.\n");
+    }
 
     printTransactions(head);
-
-    saveTransactions(
-         "logs/transaction_log.txt", head
-    );
-
-    printf("\nTransactions saved.\n");
 
     return 0;
 }
 
+                  
     
+              
             
-                      
-   
+            
+      
 
-   
+    
+          

@@ -1,3 +1,4 @@
+
 #ifndef FILEIO_H
 #define FILEIO_H
 
@@ -6,6 +7,10 @@
 void saveTransactions(
     const char *filename,
     Transaction *head
+);
+
+Transaction* loadTransactions(
+    const char *filename
 );
 
 #endif
