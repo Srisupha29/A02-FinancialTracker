@@ -1,0 +1,3 @@
+INC|Salary|1200.00
+EXP|Internet|-50.00
+EXP|Food|-150.00

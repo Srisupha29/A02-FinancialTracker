@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "../include/transaction.h"
+#include "../include/fileio.h"
 
 int main()
 {
@@ -46,6 +47,12 @@ int main()
     deleteAtPosition(head, 3);
 
     printTransactions(head);
+
+    saveTransactions(
+         "logs/transaction_log.txt", head
+    );
+
+    printf("\nTransactions saved.\n");
 
     return 0;
 }
