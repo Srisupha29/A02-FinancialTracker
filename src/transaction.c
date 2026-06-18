@@ -17,6 +17,8 @@ Transaction* createTransaction(
     strcpy(node->description, description);
 
     node->amount = amount;
+    
+    node->status = NEW;
 
     node->next = NULL;
 
@@ -55,11 +57,18 @@ void printTransactions(
     while (current != NULL)
     {
         printf(
-            "%d. %s %.2f\n",
-            position,
-            current->description,
-            current->amount
-        );
+            "%d. %s %.2f",
+             position,
+             current->description,
+             current->amount
+);
+
+if (current->status == DELETED)
+{
+    printf(" --- d");
+}
+
+printf("\n");
 
         current = current->next;
         position++;
@@ -119,4 +128,28 @@ void insertAtPosition(
 
     newNode->next = current->next;
     current->next = newNode;
+}
+
+void deleteAtPosition(
+    Transaction *head,
+    int position
+)
+{
+    Transaction *current = head;
+
+    int currentPosition = 1;
+
+    while (
+        current != NULL &&
+        currentPosition < position
+    )
+    {
+        current = current->next;
+        currentPosition++;
+    }
+
+    if (current != NULL)
+    {
+        current->status = DELETED;
+    }
 }

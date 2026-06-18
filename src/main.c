@@ -43,6 +43,8 @@ int main()
         2
     );
 
+    deleteAtPosition(head, 3);
+
     printTransactions(head);
 
     return 0;

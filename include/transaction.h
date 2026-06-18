@@ -6,13 +6,22 @@ typedef enum {
     EXPENSE
 } TransactionType;
 
+typedef enum {
+    SAVED,
+    NEW,
+    DELETED
+} TransactionStatus;
+
 typedef struct Transaction {
     TransactionType type;
     char description[100];
     double amount;
+    
+    TransactionStatus status;
 
     struct Transaction *next;
 } Transaction;
+
 
 Transaction* createTransaction(
     TransactionType type,
@@ -36,6 +45,11 @@ double calculateBalance(
 void insertAtPosition(
     Transaction **head,
     Transaction *newNode,
+    int position
+);
+
+void deleteAtPosition(
+    Transaction *head,
     int position
 );
 
