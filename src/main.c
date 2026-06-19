@@ -29,6 +29,7 @@ int main()
     char command[100];
     char description[100];
     double amount;
+    int position;
 
     while (1)
     {
@@ -103,10 +104,24 @@ int main()
 
             break;
         }
-        else
+        else if (strncmp(command, "delete ", 7) == 0)
         {
+           sscanf(command, "delete %d", &position);
+
+           deleteAtPosition(
+               head,
+               position
+           );
+
+           printf(
+               "Transaction %d deleted.\n",
+               position
+           );
+       }
+       else
+       {
             printf("Unknown command.\n");
-        }
+       }
     }
 
     return 0;

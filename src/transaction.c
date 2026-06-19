@@ -85,13 +85,16 @@ double calculateBalance(
 
     while (current != NULL)
     {
-        if (current->type == INCOME)
+        if (current->status != DELETED)
         {
-            balance += current->amount;
-        }
-        else
-        {
-            balance -= current->amount;
+            if (current->type == INCOME)
+            {
+                balance += current->amount;
+            }
+            else
+            {
+                balance -= current->amount;
+            }
         }
 
         current = current->next;

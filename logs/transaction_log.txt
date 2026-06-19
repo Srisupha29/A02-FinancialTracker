@@ -1,2 +1,2 @@
-INC|salart|1200.00
-EXP|bruh|-788.00
+INC|salary|1200.00
+EXP|food|-200.00
