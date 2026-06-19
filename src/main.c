@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "../include/transaction.h"
 #include "../include/fileio.h"
 
-int main() 
+int main()
 {
     Transaction *head = NULL;
 
@@ -25,17 +26,88 @@ int main()
         printf("\nStarting new session.\n");
     }
 
-    printTransactions(head);
+    char command[100];
+    char description[100];
+    double amount;
+
+    while (1)
+    {
+        printf("\nCommand: ");
+
+        scanf(" %99[^\n]", command);
+
+        if (strcmp(command, "add income") == 0)
+        {
+            printf("Description: ");
+            scanf(" %99[^\n]", description);
+
+            printf("Amount: ");
+            scanf("%lf", &amount);
+
+            Transaction *node =
+                createTransaction(
+                    INCOME,
+                    description,
+                    amount
+                );
+
+            insertAtEnd(
+                &head,
+                node
+            );
+
+            printf("Income added.\n");
+        }
+        else if (strcmp(command, "add expense") == 0)
+        {
+            printf("Description: ");
+            scanf(" %99[^\n]", description);
+
+            printf("Amount: ");
+            scanf("%lf", &amount);
+
+            Transaction *node =
+                createTransaction(
+                    EXPENSE,
+                    description,
+                    amount
+                );
+
+            insertAtEnd(
+                &head,
+                node
+            );
+
+            printf("Expense added.\n");
+        }
+        else if (strcmp(command, "print") == 0)
+        {
+            printTransactions(head);
+
+            double balance =
+                calculateBalance(head);
+
+            printf(
+                "\nBalance: %.2f\n",
+                balance
+            );
+        }
+        else if (strcmp(command, "quit") == 0)
+        {
+            saveTransactions(
+                "logs/transaction_log.txt",
+                head
+            );
+
+            printf("Session saved.\n");
+
+            break;
+        }
+        else
+        {
+            printf("Unknown command.\n");
+        }
+    }
 
     return 0;
 }
-
-                  
-    
-              
-            
-            
-      
-
-    
-          
