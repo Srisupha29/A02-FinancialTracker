@@ -1,2 +1,4 @@
 INC|salary|1200.00
-EXP|food|-200.00
+EXP|transport|-300.00
+INC|money more|300.00
+EXP|food|-400.00

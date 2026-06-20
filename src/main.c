@@ -44,6 +44,9 @@ int main()
 
             printf("Amount: ");
             scanf("%lf", &amount);
+            
+            printf("Position: ");
+            scanf("%d", &position);
 
             Transaction *node =
                 createTransaction(
@@ -51,10 +54,10 @@ int main()
                     description,
                     amount
                 );
-
-            insertAtEnd(
-                &head,
-                node
+            insertAtPosition(
+               &head,
+               node,  
+               position
             );
 
             printf("Income added.\n");
@@ -67,6 +70,9 @@ int main()
             printf("Amount: ");
             scanf("%lf", &amount);
 
+            printf("Position: ");
+            scanf("%d", &position);
+
             Transaction *node =
                 createTransaction(
                     EXPENSE,
@@ -74,11 +80,12 @@ int main()
                     amount
                 );
 
-            insertAtEnd(
+            insertAtPosition(
                 &head,
-                node
+                node,
+                position
             );
-
+                    
             printf("Expense added.\n");
         }
         else if (strcmp(command, "print") == 0)
