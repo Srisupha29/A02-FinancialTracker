@@ -156,3 +156,19 @@ void deleteAtPosition(
         current->status = DELETED;
     }
 }
+
+void freeTransactions(
+    Transaction *head
+)
+{
+    Transaction *current = head;
+
+    while (current != NULL)
+    {
+        Transaction *temp = current;
+
+        current = current->next;
+
+        free(temp);
+    }
+}
