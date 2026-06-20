@@ -44,16 +44,27 @@ int main()
 
             printf("Amount: ");
             scanf("%lf", &amount);
-            
+
+            if (amount <= 0)
+            {
+                printf("Amount must be positive.\n");
+                continue;
+            }
+
             printf("Position: ");
             scanf("%d", &position);
-
+            if (position < 1) 
+            {
+                 printf("Invalid position.\n"); 
+                 continue; 
+            }
             Transaction *node =
                 createTransaction(
                     INCOME,
                     description,
                     amount
                 );
+
             insertAtPosition(
                &head,
                node,  
@@ -70,10 +81,22 @@ int main()
             printf("Amount: ");
             scanf("%lf", &amount);
 
+            if (amount <= 0)
+            {
+                printf("Amount must be positive.\n");
+                continue;
+            }
+
             printf("Position: ");
             scanf("%d", &position);
 
-            Transaction *node =
+           if (position < 1)
+           {
+                printf("Invalid position.\n");
+                 continue;
+           }
+
+           Transaction *node =
                 createTransaction(
                     EXPENSE,
                     description,
@@ -99,6 +122,15 @@ int main()
                 "\nBalance: %.2f\n",
                 balance
             );
+
+            if (balance >= 0)
+            {
+                 printf("Status: Within Budget\n");
+            }
+            else
+            {
+                 printf("Status: Over Budget\n");
+            }
         }
         else if (strcmp(command, "quit") == 0)
         {
@@ -106,6 +138,8 @@ int main()
                 "logs/transaction_log.txt",
                 head
             );
+            
+            freeTransactions(head);
 
             printf("Session saved.\n");
 
@@ -119,11 +153,24 @@ int main()
                head,
                position
            );
+           if (position < 1)
+           {
+               printf("Invalid position.\n");
+           }
+           else
+           {
+               deleteAtPosition(
+                  head,
+                  position
+           );
 
            printf(
-               "Transaction %d deleted.\n",
-               position
+                "Transaction %d deleted.\n",
+                 position
            );
+}
+
+       
        }
        else
        {

@@ -53,5 +53,11 @@ void deleteAtPosition(
     int position
 );
 
+void freeTransactions(
+    Transaction *head
+);
+
+
+
 #endif
 
